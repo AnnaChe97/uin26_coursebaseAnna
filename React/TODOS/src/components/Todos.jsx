@@ -1,31 +1,14 @@
 import Todo from "./Todo";
 
-export default function Todos (){
+export default function Todos ({todoItems, setToDoList}){
     
-    const todoItems = [
-        {
-            id: 0,
-            title: "Gå på butikken",
-            content: "Hanlde spagetti og dorull"
-        },
-        {
-            id: 1,
-            title: "Skrive emnerapport",
-            content: "Gå igjennom statestikk og skrive rapport og tilbakemelding"
-        },
-        {
-            id: 2,
-            title: "Kjøpe kattemat",
-            content: "Kjøpe ny slankefôr..."
-        },
+    console.log(todoItems)
 
-
-    ]
 
     return(
-        <section>
+        <section className="flex-r">
             <h2>Todos</h2>
-            <Todo />
+            {todoItems.map((item) => <Todo key={item.id} title={item.title} content={item.content} id={item.id} setToDoList={setToDoList} />)}
         </section>
     )
 }
