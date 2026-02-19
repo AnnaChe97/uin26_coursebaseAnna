@@ -6,6 +6,7 @@ import About from './components/About.jsx'
 import Home from './components/Home.jsx'
 import Category from './components/Category.jsx'
 import CategoryLayout from './components/Categorylayout.jsx'
+import { useEffect, useState } from 'react'
 
 
 function App() {
