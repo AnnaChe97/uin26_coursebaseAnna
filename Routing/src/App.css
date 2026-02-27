@@ -48,3 +48,10 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.category-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap:0.5rem;
+  list-style-type: none;
+}
