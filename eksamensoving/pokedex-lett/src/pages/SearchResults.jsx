@@ -12,7 +12,7 @@ export default function SearchResults(){
         try{
             const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchQuery}`)
             const data = await res.json()
-            setSearchResults([data])  // BUG: Using setSearchResults but useState not imported
+            setSearchResults(data)  // BUG: Using setSearchResults but useState not imported
             console.log(data)
         
         }catch(err){
@@ -25,6 +25,7 @@ export default function SearchResults(){
     },[searchQuery]) 
 
     console.log("sjekk", searchResults)
+
     const pokemonDef = {
         name: searchResults?.name,
         id: searchResults?.id,
