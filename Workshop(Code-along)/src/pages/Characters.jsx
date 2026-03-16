@@ -26,7 +26,7 @@ const getAllCharacters = async ()=>{
             <main>
             <h1>Characters</h1>
             <section>
-                {characters?.map((char) => <CharacterCards key={char.id} char={char} />)}
+                {characters?.map((charcard) => <CharacterCards key={charcard.id} charcard={charcard} />)}
             </section>
         </main>
     )
