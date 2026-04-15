@@ -9,6 +9,19 @@ const products = {
             type: "string"
         },
         {
+                title: 'Slug',
+                name: 'slug',
+                type: 'slug',
+                options: {
+                    source: 'productname',
+                    maxLength: 200, // will be ignored if slugify is set
+                    slugify: input => input
+                                        .toLowerCase()
+                                        .replace(/\s+/g, '-')
+                                        .slice(0, 100)
+                },
+},
+        {
             name: "price",
             title: "Pris",
             type: "number"
@@ -29,7 +42,22 @@ const products = {
             type: "reference",
             to: [{type: "category"}]
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'productname',
+            inCat: 'productcategory.categoryname',
+            image: 'productimage'
+        },
+        prepare(selection) {
+            const {title,inCat,image} = selection
+            return {
+                title: title,
+                subtitle: `Kategori: ${inCat ? inCat: "Ukjent"}`,
+                media: image
+            }
+        }
+    }
 }
 
 export default products
