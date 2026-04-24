@@ -1,13 +1,23 @@
 import { Link } from "react-router-dom";
+import client from "../helpers/client";
+import { useEffect, useState } from "react";
 
 export default function Nav(){
+    const [categories, setCategories] = useState(null)
+
+    useEffect(() => {
+        async function fetchAllCategories(){
+            const allCategories = await client.fetch("*[_type == 'category']{categoryname, slug}")
+            setCategories(allCategories)
+        }    
+        fetchAllCategories()
+}, [])
+    
+    console.log(categories)
+
     return(
         <nav>
-            <Link to="city">City</Link>
-            <Link to="Ninjago">Ninjago</Link>
-            <Link to="castle-and-knights">Castle & Knights</Link>
-            <Link to="marine-and-pirates">Marine and Pirates</Link>
-            <Link to="movie-characters">Movie Characters</Link>
+            {categories?.map((c, index) => (<Link key={index} to={"/kategori/" + c.slug.current}>{c.categoryname}</Link>))}
         </nav>
     )
 
